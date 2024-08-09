@@ -1,5 +1,3 @@
-'use client'; // 필요한 경우에만 클라이언트에서 실행되는 컴포넌트임을 명시합니다.
-
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -9,6 +7,7 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    // 카테고리 데이터를 가져오는 함수
     const fetchCategories = async () => {
       const res = await fetch('/api/getCategories');
       const data = await res.json();
@@ -53,8 +52,8 @@ export default function Home() {
           <label>Item:</label>
           <input
             type="text"
-          value={item}
-          onChange={(e) => setItem(e.target.value)}
+            value={item}
+            onChange={(e) => setItem(e.target.value)}
           />
         </div>
         <div>
