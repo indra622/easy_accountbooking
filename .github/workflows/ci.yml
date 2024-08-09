@@ -21,8 +21,15 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Create credential.json file
+      run: echo "${{ secrets.CREDENTIAL_JSON }}" > ./credential.json
+
     - name: Run tests
-      run: npm test
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/credential.json
+      run: |
+        npm test > /home/runner/test.log
+        cat /home/runner/test.log
 
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.5
