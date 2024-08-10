@@ -12,6 +12,9 @@ describe('/api/sheets API', () => {
       },
     });
 
+    // req.json() 대신 req.body를 사용하여 데이터를 가져옵니다.
+    req.json = async () => req.body;
+
     await POST(req, res);
 
     expect(res.statusCode).toBe(200);
@@ -28,6 +31,8 @@ describe('/api/sheets API', () => {
         amount: '',
       },
     });
+
+    req.json = async () => req.body;
 
     await POST(req, res);
 
