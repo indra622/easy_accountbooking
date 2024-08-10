@@ -1,3 +1,4 @@
+import React from 'react'; // React를 명시적으로 가져옵니다.
 import { render, screen, fireEvent } from '@testing-library/react';
 import Home from './page';
 

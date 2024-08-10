@@ -1,4 +1,4 @@
-import handler from '../../api/sheets/route';
+import { POST } from '../../api/sheets/route';
 import { createMocks } from 'node-mocks-http';
 
 describe('/api/sheets API', () => {
@@ -12,7 +12,7 @@ describe('/api/sheets API', () => {
       },
     });
 
-    await handler(req);
+    await POST(req, res);
 
     expect(res.statusCode).toBe(200);
     const jsonData = JSON.parse(res._getData());
@@ -29,7 +29,7 @@ describe('/api/sheets API', () => {
       },
     });
 
-    await handler(req);
+    await POST(req, res);
 
     expect(res.statusCode).toBe(500);
   });
